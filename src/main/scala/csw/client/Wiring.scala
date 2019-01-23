@@ -5,7 +5,6 @@ import akka.stream.{ActorMaterializer, Materializer}
 import akka.util.Timeout
 import csw.client.factory.{ComponentFactory, LocationServiceWrapper}
 import csw.event.api.scaladsl.EventService
-import csw.event.client.EventServiceFactory
 import csw.framework.internal.wiring.FrameworkWiring
 import csw.location.client.ActorSystemFactory
 
@@ -23,6 +22,6 @@ class Wiring() {
   import frameworkWiring._
 
   lazy val locationServiceWrapper: LocationServiceWrapper = new LocationServiceWrapper(locationService, frameworkSystem)
-  lazy val eventService: EventService                     = new EventServiceFactory().make(locationService)
+  lazy val eventService: EventService                     = eventServiceFactory.make(locationService)
   lazy val componentFactory                               = new ComponentFactory(locationServiceWrapper)
 }
