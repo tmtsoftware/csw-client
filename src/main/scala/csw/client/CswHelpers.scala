@@ -18,8 +18,8 @@ object CswHelpers {
   lazy val cswContext: CswContext = clientWiring.cswContext
   import cswContext._
 
-  def assemblyCommandService(assemblyName: String): CommandService =
-    createCommandService(getAkkaLocation(assemblyName, Assembly))
+  def assemblyCommandService(assemblyName: String): CommandService = createCommandService(getAkkaLocation(assemblyName, Assembly))
+
   def hcdCommandService(hcdName: String): CommandService = createCommandService(getAkkaLocation(hcdName, HCD))
 
   def shutdown(): Done = wiring.actorRuntime.shutdown(ApplicationFinishedReason).await()
