@@ -28,7 +28,6 @@ object Common extends AutoPlugin {
     javacOptions in (Compile, doc) ++= Seq("-Xdoclint:none"),
     resolvers += "jitpack" at "https://jitpack.io",
     version := "0.1-SNAPSHOT",
-    fork := true,
     autoCompilerPlugins := true,
     if (formatOnCompile) scalafmtOnCompile := true else scalafmtOnCompile := false
   )
