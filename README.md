@@ -1,14 +1,13 @@
 # csw-client
 
-This project implements interactive shell which can be used to communicate with an HCD (Hardware Control Daemon) and an Assembly using 
+This project contains an interactive shell and allows its users to gain access to all the major csw services via CLI 
+which then can be used to communicate with a HCD (Hardware Control Daemon) and an Assembly using 
 TMT Common Software ([CSW](https://github.com/tmtsoftware/csw)) APIs. 
 
 ## Build Instructions
 
 The build is based on sbt and depends on libraries generated from the 
 [csw](https://github.com/tmtsoftware/csw) project.
-
-See [here](https://www.scala-sbt.org/1.0/docs/Setup.html) for instructions on installing sbt.
 
 ## Prerequisites for running Components
 
@@ -22,9 +21,41 @@ If you are not building csw from the sources, you can get the script as follows:
  - Run `./csw_services.sh --help` to get more information.
  - Run `./csw_services.sh start` to start the location service and config server.
 
-## Building the interactive shell as an Application
+## Running the csw-client
 
- - Run `sbt csw-client-deploy/universal:packageBin`, this will create self contained zip in `csw-client-deploy/target/universal` directory
- - Unzip the generated zip and cd into the bin directory
+After making sure that all the pre-requisites are satisfied, we can directly run the client via sbt 
+from the root directory of the project
 
-Note: An alternative method is to run `sbt stage`, which installs the applications locally in ./target/universal/stage/bin
+ - Run `sbt run` 
+
+We can also run it via binary file generated after staging the project 
+ - Run `sbt universal:stage`
+ - Navigate to `/target/universal/stage/bin` 
+ - Run `./csw-client`
+
+## Usage of Command Service to interact with HCDs and Assemblies 
+
+### Finding the required component
+
+Get handle to the command service for a particular HCD/Assembly using following commands within csw-client repl
+ - For HCDs
+ `val hcdComponent = hcdCommandService("SampleHcdName")`
+ - For Assemblies
+ `val assemblyComponent = assemblyCommandService("SampleAssemblyName")`
+ 
+**SampleHcdName** and **SampleAssemblyName** are the names by which both HCD and Assembly components were registered 
+with location service respectively. 
+
+Note - The above calls internally uses location service to resolve the required HCD/assembly.
+
+### Creating the commands to submit
+
+Create a setup command object using similar command to what is shown below
+
+`val setup = Setup(Prefix("sample.prefix"),CommandName("setup-command"),Some(ObsId("sample-obsId")))`
+
+### Submitting the commands to components
+
+Submit the setup command object created in previous step using command service for the HCD/Assembly
+ - `val hcdResponse = hcdComponent.submit(setup).get` 
+ - `val assemblyResponse = assemblyComponent.submit(setup).get`
