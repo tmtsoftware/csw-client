@@ -17,7 +17,7 @@ object Main {
                 |import csw.params.events.EventKey
                 |import csw.params.commands._
                 |import csw.params.core.models._
-                |import csw.client.utils.Extensions.FutureExt
+                |import csw.client.utils.Extensions._
                 |import csw.client.CswHelpers._
                 |import cswContext._
                 |""".stripMargin
@@ -25,5 +25,6 @@ object Main {
       .run()
 
     CswHelpers.shutdown()
+
   }
 }
