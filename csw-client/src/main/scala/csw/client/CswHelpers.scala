@@ -12,7 +12,7 @@ import csw.location.api.models.ComponentType.{Assembly, HCD}
 import csw.location.api.models.Connection.AkkaConnection
 import csw.location.api.models.{AkkaLocation, ComponentId, ComponentType}
 
-object CswHelpers {
+class CswHelpers {
 
   lazy val clientWiring = new CswClientWiring
   import clientWiring._
@@ -23,8 +23,6 @@ object CswHelpers {
   def assemblyCommandService(assemblyName: String): CommandService = createCommandService(getAkkaLocation(assemblyName, Assembly))
 
   def hcdCommandService(hcdName: String): CommandService = createCommandService(getAkkaLocation(hcdName, HCD))
-
-  def shutdown(): Done = wiring.actorRuntime.shutdown(ApplicationFinishedReason).await()
 
   private def getAkkaLocation(name: String, cType: ComponentType): AkkaLocation = {
     val maybeLocation = locationService.resolve(AkkaConnection(ComponentId(name, cType)), timeout).await()

@@ -17,13 +17,12 @@ object Main {
                 |import csw.params.commands._
                 |import csw.params.core.models._
                 |import csw.client.utils.Extensions._
-                |import csw.client.CswHelpers._
+                |import cswHelpers._
                 |import cswContext._
                 |""".stripMargin
       )
-      .run()
-
-    CswHelpers.shutdown()
-
+      .run(
+        "cswHelpers" -> new CswHelpers()
+      )
   }
 }
