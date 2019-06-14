@@ -7,7 +7,6 @@ object Main {
       .Main(
         predefCode = """
                 |import scala.concurrent.duration.Duration
-                |import scala.concurrent.duration.Duration
                 |import akka.util.Timeout
                 |import scala.concurrent.duration.DurationDouble
                 |import scala.concurrent.{Await, Future}

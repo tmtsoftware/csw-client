@@ -4,6 +4,6 @@ lazy val `csw-client` = project
   .settings(
     libraryDependencies ++= Seq(
       "com.github.tmtsoftware.csw" %% "csw-framework" % "f7e6357",
-      "com.lihaoyi" % "ammonite" % "1.6.7" cross CrossVersion.full
+      "com.lihaoyi" % "ammonite" % "1.6.8" cross CrossVersion.full
     )
   )
