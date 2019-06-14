@@ -1,4 +1,3 @@
-import org.scalafmt.sbt.ScalafmtPlugin.autoImport.scalafmtOnCompile
 import sbt.Keys._
 import sbt.plugins.JvmPlugin
 import sbt.{url, _}
@@ -29,7 +28,6 @@ object Common extends AutoPlugin {
     resolvers += "jitpack" at "https://jitpack.io",
     version := "0.1-SNAPSHOT",
     autoCompilerPlugins := true,
-    if (formatOnCompile) scalafmtOnCompile := true else scalafmtOnCompile := false
   )
 
   private def formatOnCompile = sys.props.get("format.on.compile") match {
