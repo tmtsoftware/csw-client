@@ -10,8 +10,8 @@ object Common extends AutoPlugin {
   override def requires: Plugins = JvmPlugin
 
   override lazy val projectSettings: Seq[Setting[_]] = Seq(
-    organization := "org.tmt",
-    organizationName := "TMT",
+    organization := "com.github.tmtsoftware.csw-client",
+    organizationName := "TMT Org",
     scalaVersion := "2.12.8",
     organizationHomepage := Some(url("http://www.tmt.org")),
     scalacOptions ++= Seq(

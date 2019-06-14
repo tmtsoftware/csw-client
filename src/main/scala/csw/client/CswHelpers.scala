@@ -1,6 +1,7 @@
 package csw.client
 
 import akka.Done
+import akka.actor.typed.{ActorSystem, SpawnProtocol}
 import csw.client.utils.Extensions.FutureExt
 import csw.command.api.scaladsl.CommandService
 import csw.command.client.CommandServiceFactory
@@ -17,6 +18,7 @@ object CswHelpers {
   import clientWiring._
   lazy val cswContext: CswContext = clientWiring.cswContext
   import cswContext._
+  implicit lazy val typedSystem: ActorSystem[SpawnProtocol] = clientWiring.wiring.actorSystem
 
   def assemblyCommandService(assemblyName: String): CommandService = createCommandService(getAkkaLocation(assemblyName, Assembly))
 
