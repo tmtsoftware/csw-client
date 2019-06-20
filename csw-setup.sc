@@ -2,9 +2,8 @@ interp.repositories() ++= Seq(coursier.Repositories.jitpack)
 
 @
 
-import $ivy.`com.github.tmtsoftware.csw::csw-framework:f7e6357`
+import $ivy.`com.github.tmtsoftware.csw::csw-framework:0.7.0`
 
-import akka.util.Timeout
 import akka.util.Timeout
 import csw.command.api.scaladsl.CommandService
 import csw.command.client.CommandServiceFactory
