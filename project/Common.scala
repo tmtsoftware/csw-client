@@ -11,7 +11,7 @@ object Common extends AutoPlugin {
   override lazy val projectSettings: Seq[Setting[_]] = Seq(
     organization := "com.github.tmtsoftware.csw-client",
     organizationName := "TMT Org",
-    scalaVersion := "2.12.8",
+    scalaVersion := "2.13.0",
     organizationHomepage := Some(url("http://www.tmt.org")),
     scalacOptions ++= Seq(
       "-encoding",
@@ -20,18 +20,17 @@ object Common extends AutoPlugin {
       "-unchecked",
       "-deprecation",
       "-Xlint",
-      "-Yno-adapted-args",
       "-Ywarn-dead-code",
       "-Xfuture"
     ),
     javacOptions in (Compile, doc) ++= Seq("-Xdoclint:none"),
     resolvers += "jitpack" at "https://jitpack.io",
     version := "0.1-SNAPSHOT",
-    autoCompilerPlugins := true,
+    autoCompilerPlugins := true
   )
 
   private def formatOnCompile = sys.props.get("format.on.compile") match {
     case Some("false") ⇒ false
-    case _             ⇒ true
+    case _ ⇒ true
   }
 }

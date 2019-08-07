@@ -4,7 +4,7 @@ import csw.client.utils.Extensions.FutureExt
 import csw.command.client.models.framework.{ComponentInfo, LocationServiceUsage}
 import csw.framework.internal.wiring.{CswFrameworkSystem, FrameworkWiring}
 import csw.framework.models.CswContext
-import csw.location.api.models.ComponentType
+import csw.location.models.ComponentType
 import csw.params.core.models.Prefix
 
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
