@@ -1,16 +1,14 @@
 package csw.client
 
-import akka.Done
 import akka.actor.typed.{ActorSystem, SpawnProtocol}
 import csw.client.utils.Extensions.FutureExt
 import csw.command.api.scaladsl.CommandService
 import csw.command.client.CommandServiceFactory
 import csw.framework.CswClientWiring
-import csw.framework.commons.CoordinatedShutdownReasons.ApplicationFinishedReason
 import csw.framework.models.CswContext
-import csw.location.api.models.ComponentType.{Assembly, HCD}
-import csw.location.api.models.Connection.AkkaConnection
-import csw.location.api.models.{AkkaLocation, ComponentId, ComponentType}
+import csw.location.models.ComponentType.{Assembly, HCD}
+import csw.location.models.Connection.AkkaConnection
+import csw.location.models.{AkkaLocation, ComponentId, ComponentType}
 
 class CswHelpers {
 
@@ -18,16 +16,27 @@ class CswHelpers {
   import clientWiring._
   lazy val cswContext: CswContext = clientWiring.cswContext
   import cswContext._
-  implicit lazy val typedSystem: ActorSystem[SpawnProtocol] = clientWiring.wiring.actorSystem
+  implicit lazy val typedSystem: ActorSystem[SpawnProtocol] =
+    clientWiring.wiring.actorSystem
 
-  def assemblyCommandService(assemblyName: String): CommandService = createCommandService(getAkkaLocation(assemblyName, Assembly))
+  def assemblyCommandService(assemblyName: String): CommandService =
+    createCommandService(getAkkaLocation(assemblyName, Assembly))
 
-  def hcdCommandService(hcdName: String): CommandService = createCommandService(getAkkaLocation(hcdName, HCD))
+  def hcdCommandService(hcdName: String): CommandService =
+    createCommandService(getAkkaLocation(hcdName, HCD))
 
-  private def getAkkaLocation(name: String, cType: ComponentType): AkkaLocation = {
-    val maybeLocation = locationService.resolve(AkkaConnection(ComponentId(name, cType)), timeout).await()
-    maybeLocation.getOrElse(throw new RuntimeException(s"Location not found for component: name:[$name] type:[${cType.name}]"))
+  private def getAkkaLocation(name: String,
+                              cType: ComponentType): AkkaLocation = {
+    val maybeLocation = locationService
+      .resolve(AkkaConnection(ComponentId(name, cType)), timeout)
+      .await()
+    maybeLocation.getOrElse(
+      throw new RuntimeException(
+        s"Location not found for component: name:[$name] type:[${cType.name}]"
+      )
+    )
   }
 
-  private def createCommandService: AkkaLocation ⇒ CommandService = CommandServiceFactory.make
+  private def createCommandService: AkkaLocation => CommandService =
+    CommandServiceFactory.make
 }
