@@ -20,8 +20,8 @@ object Common extends AutoPlugin {
       "-unchecked",
       "-deprecation",
       "-Xlint",
-      "-Ywarn-dead-code",
-      "-Xfuture"
+      "-Ywarn-dead-code"
+//      "-Xfuture"
     ),
     javacOptions in (Compile, doc) ++= Seq("-Xdoclint:none"),
     resolvers += "jitpack" at "https://jitpack.io",
