@@ -1,4 +1,4 @@
-package csw.client.utils
+package utils
 
 import akka.util.Timeout
 

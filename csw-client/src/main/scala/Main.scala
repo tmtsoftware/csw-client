@@ -1,11 +1,13 @@
-package csw.client
+import csw.client.CswHelpers
+import csw.framework.CswClientWiring
+import esw.client.EswHelpers
 
 object Main {
 
   def main(args: Array[String]): Unit = {
+    val clientWiring = new CswClientWiring
     ammonite
-      .Main(
-        predefCode = """
+      .Main(predefCode = """
                 |import scala.concurrent.duration.Duration
                 |import akka.util.Timeout
                 |import scala.concurrent.duration.DurationDouble
@@ -16,13 +18,16 @@ object Main {
                 |import csw.params.events.EventKey
                 |import csw.params.commands._
                 |import csw.params.core.models._
-                |import csw.client.utils.Extensions._
+                |import utils.Extensions._
+                |import csw.prefix.models.Subsystem._
+                |import csw.prefix.models.Prefix
                 |import cswHelpers._
+                |import eswHelpers._
                 |import cswContext._
-                |""".stripMargin
-      )
+                |""".stripMargin)
       .run(
-        "cswHelpers" -> new CswHelpers()
+        "cswHelpers" -> new CswHelpers(clientWiring),
+        "eswHelpers" -> new EswHelpers(clientWiring)
       )
   }
 }
