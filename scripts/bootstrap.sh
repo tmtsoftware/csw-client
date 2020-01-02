@@ -6,13 +6,14 @@ scriptsDir="$(
 )"
 
 rootDir="$(dirname "$scriptsDir")"
+targetDir=$rootDir/target/coursier/stage/"$1"/
 
 if [ "$#" -ne 0 ]; then
-  mkdir -p ../target/coursier/stage/"$1"
+  mkdir -p "$targetDir"
 
   "$scriptsDir"/coursier bootstrap -r jitpack com.github.tmtsoftware:csw-client_2.13:"$1" \
     -M client.Main \
-    -f -o "$rootDir"/target/coursier/stage/"$1"/csw-client
+    -f -o "$targetDir"/csw-client
 
   echo "Artifacts successfully generated"
 else
