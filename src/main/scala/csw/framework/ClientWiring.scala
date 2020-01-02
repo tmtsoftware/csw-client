@@ -7,12 +7,12 @@ import csw.location.models.ComponentType
 import csw.prefix.models.Prefix
 import utils.Extensions.FutureExt
 
-class CswClientWiring {
+class ClientWiring {
   lazy val wiring = new FrameworkWiring
   import wiring._
   import actorRuntime._
 
-  implicit lazy val cswFrameworkSystem: CswFrameworkSystem = new CswFrameworkSystem(typedSystem)
+  private implicit lazy val cswFrameworkSystem: CswFrameworkSystem = new CswFrameworkSystem(typedSystem)
 
   lazy val cswContext: CswContext =
     CswContext
