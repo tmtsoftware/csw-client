@@ -1,4 +1,3 @@
-import csw.client.CswHelpers
 import csw.framework.ClientWiring
 import esw.client.CommandServiceDsl
 
