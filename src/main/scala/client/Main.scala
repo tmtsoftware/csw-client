@@ -1,5 +1,7 @@
+package client
+
 import csw.framework.ClientWiring
-import esw.client.CommandServiceDsl
+import esw.CommandServiceDsl
 
 object Main {
 
@@ -17,8 +19,8 @@ object Main {
                 |import csw.params.core.models._
                 |import csw.prefix.models.Subsystem._
                 |import csw.prefix.models.Prefix
-                |import utils.Extensions._
-                |import utils.Timeouts._
+                |import client.utils.Extensions._
+                |import client.utils.Timeouts._
                 |import commandService._
                 |import commandService.clientWiring.cswContext._
                 |""".stripMargin

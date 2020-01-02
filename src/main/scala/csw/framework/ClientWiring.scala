@@ -5,7 +5,7 @@ import csw.framework.internal.wiring.{CswFrameworkSystem, FrameworkWiring}
 import csw.framework.models.CswContext
 import csw.location.models.ComponentType
 import csw.prefix.models.Prefix
-import utils.Extensions.FutureExt
+import client.utils.Extensions.FutureExt
 
 class ClientWiring {
   lazy val wiring = new FrameworkWiring
