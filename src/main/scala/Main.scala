@@ -19,6 +19,7 @@ object Main {
                 |import csw.params.commands._
                 |import csw.params.core.models._
                 |import utils.Extensions._
+                |import utils.Timeouts._
                 |import csw.prefix.models.Subsystem._
                 |import csw.prefix.models.Prefix
                 |import cswHelpers._
