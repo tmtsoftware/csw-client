@@ -15,7 +15,9 @@ if [ "$#" -ne 0 ]; then
     -M client.Main \
     -f -o "$targetDir"/csw-client
 
-  echo "Artifacts successfully generated"
+  echo "========================================================="
+  echo "[INFO] Successfully generated executable at path: [$targetDir]"
+  echo "========================================================="
 else
   echo "[ERROR] Provide version ID as argument"
 fi
