@@ -6,7 +6,6 @@ scriptsDir="$(
 )"
 
 rootDir="$(dirname "$scriptsDir")"
-coursierExecutable="$scriptsDir"/coursier
 targetDir=$rootDir/target/coursier/stage/"$1"/
 executable=$targetDir/csw-client
 mainClass="client.Main"
@@ -15,6 +14,11 @@ clientVersion="master-SNAPSHOT"
 
 if [ "$#" -ne 0 ]; then
   clientVersion=$1
+fi
+
+coursierExecutable="$scriptsDir"/coursier
+if [[ ! -f "$coursierExecutable" ]] && hash coursier 2>/dev/null; then
+  coursierExecutable=coursier
 fi
 
 mkdir -p "$targetDir"
