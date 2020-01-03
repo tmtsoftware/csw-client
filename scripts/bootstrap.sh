@@ -6,18 +6,24 @@ scriptsDir="$(
 )"
 
 rootDir="$(dirname "$scriptsDir")"
+coursierExecutable="$scriptsDir"/coursier
 targetDir=$rootDir/target/coursier/stage/"$1"/
+executable=$targetDir/csw-client
+mainClass="client.Main"
+cswClientDep="com.github.tmtsoftware:csw-client_2.13"
 
 if [ "$#" -ne 0 ]; then
   mkdir -p "$targetDir"
 
-  "$scriptsDir"/coursier bootstrap -r jitpack com.github.tmtsoftware:csw-client_2.13:"$1" \
-    -M client.Main \
-    -f -o "$targetDir"/csw-client
+  $coursierExecutable bootstrap -r jitpack $cswClientDep:"$1" -M $mainClass -f -o "$executable"
 
   echo "========================================================="
   echo "[INFO] Successfully generated executable at path: [$targetDir]"
   echo "========================================================="
+
+  echo "[INFO] Starting client ..."
+  echo "========================================================="
+  $executable
 else
   echo "[ERROR] Provide version ID as argument"
 fi

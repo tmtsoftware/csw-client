@@ -11,7 +11,7 @@ object Common extends AutoPlugin {
   override lazy val projectSettings: Seq[Setting[_]] = Seq(
     organization := "com.github.tmtsoftware.csw-client",
     organizationName := "TMT Org",
-    scalaVersion := "2.13.0",
+    scalaVersion := "2.13.1",
     organizationHomepage := Some(url("http://www.tmt.org")),
     scalacOptions ++= Seq(
       "-encoding",
@@ -29,8 +29,4 @@ object Common extends AutoPlugin {
     autoCompilerPlugins := true
   )
 
-  private def formatOnCompile = sys.props.get("format.on.compile") match {
-    case Some("false") ⇒ false
-    case _ ⇒ true
-  }
 }
