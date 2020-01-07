@@ -7,9 +7,9 @@ scriptsDir="$(
 
 rootDir="$(dirname "$scriptsDir")"
 targetDir=$rootDir/target/coursier/stage/"$1"/
-executable=$targetDir/csw-client
+executable=$targetDir/component-client
 mainClass="client.Main"
-clientDep="com.github.tmtsoftware:csw-client_2.13"
+clientDep="com.github.tmtsoftware:component-client_2.13"
 clientVersion="master-SNAPSHOT"
 
 if [ "$#" -ne 0 ]; then
