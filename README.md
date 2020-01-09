@@ -1,4 +1,4 @@
-# component-client
+# csw-shell
 
 This project contains an interactive shell and allows its users to gain access to all the major csw services via CLI 
 which then can be used to communicate with a HCD (Hardware Control Daemon) and an Assembly using 
@@ -22,7 +22,7 @@ If you are not building csw from the sources, you can get the script as follows:
  - Run `./csw_services.sh --help` to get more information.
  - Run `./csw_services.sh start` to start the location service and config server.
 
-## Running the component-client
+## Running the csw-shell
 
 After making sure that all the pre-requisites are satisfied, we can directly run the client via sbt 
 from the root directory of the project
@@ -32,13 +32,13 @@ from the root directory of the project
 We can also run it via a binary file generated after staging the project 
  - Run `sbt universal:stage`
  - Navigate to `/target/universal/stage/bin` 
- - Run `./component-client`
+ - Run `./csw-shell`
 
 ## Usage of Command Service to interact with HCDs, Assemblies and Sequencers 
 
 ### Finding the required component
 
-Get handle to the command service for a particular HCD/Assembly/Sequencer using following commands within component-client repl
+Get handle to the command service for a particular HCD/Assembly/Sequencer using following commands within csw-shell repl
  - For HCDs
  `val hcdComponent = hcdCommandService("iris.hcd_name")`
  - For Assemblies

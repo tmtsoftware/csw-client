@@ -20,7 +20,7 @@ class ClientWiring {
         locationService,
         eventServiceFactory,
         alarmServiceFactory,
-        // dummy component info, it is not used by component-client
+        // dummy component info, it is not used by csw-shell
         ComponentInfo(
           Prefix("csw.client"),
           ComponentType.Service,

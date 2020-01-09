@@ -1,4 +1,4 @@
-lazy val `component-client` = project
+lazy val `csw-shell` = project
   .in(file("."))
   .enablePlugins(JavaAppPackaging)
   .settings(
