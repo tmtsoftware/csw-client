@@ -5,9 +5,9 @@ import csw.framework.internal.wiring.{CswFrameworkSystem, FrameworkWiring}
 import csw.framework.models.CswContext
 import csw.location.models.ComponentType
 import csw.prefix.models.Prefix
-import client.utils.Extensions.FutureExt
+import shell.utils.Extensions.FutureExt
 
-class ClientWiring {
+class ShellWiring {
   lazy val wiring = new FrameworkWiring
   import wiring._
   import actorRuntime._
@@ -22,7 +22,7 @@ class ClientWiring {
         alarmServiceFactory,
         // dummy component info, it is not used by csw-shell
         ComponentInfo(
-          Prefix("csw.client"),
+          Prefix("csw.shell"),
           ComponentType.Service,
           "",
           LocationServiceUsage.DoNotRegister

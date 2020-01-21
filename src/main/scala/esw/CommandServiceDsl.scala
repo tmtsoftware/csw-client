@@ -2,24 +2,24 @@ package esw
 
 import akka.actor.typed.{ActorSystem, SpawnProtocol}
 import akka.util.Timeout
-import client.utils.Extensions.FutureExt
-import client.utils.Timeouts
+import shell.utils.Extensions.FutureExt
+import shell.utils.Timeouts
 import csw.command.api.scaladsl.CommandService
 import csw.command.client.CommandServiceFactory
 import csw.command.client.extensions.AkkaLocationExt.RichAkkaLocation
-import csw.framework.ClientWiring
+import csw.framework.ShellWiring
 import csw.location.models.ComponentType.{Assembly, HCD}
 import csw.prefix.models.{Prefix, Subsystem}
 import esw.ocs.impl.SequencerActorProxy
 import esw.ocs.impl.internal.LocationServiceUtil
 
-class CommandServiceDsl(val clientWiring: ClientWiring) {
-  implicit lazy val typedSystem: ActorSystem[SpawnProtocol.Command] = clientWiring.wiring.actorSystem
+class CommandServiceDsl(val shellWiring: ShellWiring) {
+  implicit lazy val typedSystem: ActorSystem[SpawnProtocol.Command] = shellWiring.wiring.actorSystem
 
   import typedSystem.executionContext
 
   private implicit val implicitTimeout: Timeout = Timeouts.defaultTimeout
-  private val locationUtil: LocationServiceUtil = new LocationServiceUtil(clientWiring.cswContext.locationService)
+  private val locationUtil: LocationServiceUtil = new LocationServiceUtil(shellWiring.cswContext.locationService)
 
   def sequencerCommandService(subsystem: Subsystem, observingMode: String): SequencerActorProxy =
     locationUtil

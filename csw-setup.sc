@@ -10,7 +10,7 @@ import csw.location.models.ComponentType.{Assembly, HCD}
 import csw.location.models.Connection.AkkaConnection
 import csw.location.models.{AkkaLocation, ComponentId, ComponentType}
 import csw.prefix.models.Prefix
-import client.utils.Timeouts
+import shell.utils.Timeouts
 
 import scala.concurrent.duration.FiniteDuration
 import scala.concurrent.{Await, Future}

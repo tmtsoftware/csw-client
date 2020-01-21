@@ -1,12 +1,12 @@
-package client
+package shell
 
-import csw.framework.ClientWiring
+import csw.framework.ShellWiring
 import esw.CommandServiceDsl
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-    val clientWiring = new ClientWiring
+    val shellWiring = new ShellWiring
     ammonite
       .Main(
         predefCode = """
@@ -19,14 +19,14 @@ object Main {
                 |import csw.params.core.models._
                 |import csw.prefix.models.Subsystem._
                 |import csw.prefix.models.Prefix
-                |import client.utils.Extensions._
-                |import client.utils.Timeouts._
+                |import shell.utils.Extensions._
+                |import shell.utils.Timeouts._
                 |import commandService._
-                |import commandService.clientWiring.cswContext._
+                |import commandService.shellWiring.cswContext._
                 |""".stripMargin
       )
       .run(
-        "commandService" -> new CommandServiceDsl(clientWiring)
+        "commandService" -> new CommandServiceDsl(shellWiring)
       )
   }
 }

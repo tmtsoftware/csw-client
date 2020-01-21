@@ -1,4 +1,4 @@
-package client.utils
+package shell.utils
 
 import scala.concurrent.duration.FiniteDuration
 import scala.concurrent.{Await, Future}

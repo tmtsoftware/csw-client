@@ -24,7 +24,7 @@ If you are not building csw from the sources, you can get the script as follows:
 
 ## Running the csw-shell
 
-After making sure that all the pre-requisites are satisfied, we can directly run the client via sbt 
+After making sure that all the pre-requisites are satisfied, we can directly run the csw-shell via sbt 
 from the root directory of the project
 
  - Run `sbt run` 

@@ -1,4 +1,4 @@
-package client.utils
+package shell.utils
 
 import akka.util.Timeout
 
