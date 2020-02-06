@@ -3,7 +3,7 @@ package csw.framework
 import csw.command.client.models.framework.{ComponentInfo, LocationServiceUsage}
 import csw.framework.internal.wiring.{CswFrameworkSystem, FrameworkWiring}
 import csw.framework.models.CswContext
-import csw.location.models.ComponentType
+import csw.location.api.models.ComponentType
 import csw.prefix.models.Prefix
 import shell.utils.Extensions.FutureExt
 
