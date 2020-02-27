@@ -25,7 +25,7 @@ object Common extends AutoPlugin {
     ),
     javacOptions in (Compile, doc) ++= Seq("-Xdoclint:none"),
     resolvers += "jitpack" at "https://jitpack.io",
-    version := "0.1-SNAPSHOT",
+    version := "0.1.0-SNAPSHOT",
     autoCompilerPlugins := true
   )
 
