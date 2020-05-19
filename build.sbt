@@ -1,5 +1,5 @@
 lazy val `csw-shell` = project
-  .in(file("."))
+  .in(file("shell"))
   .enablePlugins(JavaAppPackaging)
   .settings(
     libraryDependencies ++= Seq(
