@@ -6,6 +6,7 @@ import esw.CommandServiceDsl
 object Main {
 
   def main(args: Array[String]): Unit = {
+    println("+++++ starting shell +++++")
     val shellWiring = new ShellWiring
     ammonite
       .Main(
